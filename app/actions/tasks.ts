@@ -151,7 +151,7 @@ export async function editTask(taskId: string, formData: unknown): Promise<Actio
     eventSummary: `Task edited: "${title}"`,
   });
 
-  return { success: true, data: undefined };
+  return { success: true, data: undefined as void };
 }
 
 export async function retryTaskSync(taskId: string): Promise<ActionResult> {

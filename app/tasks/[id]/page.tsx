@@ -21,7 +21,7 @@ export default async function TaskPage({ params }: { params: Promise<{ id: strin
   if (!task) notFound();
 
   const isOwner = session?.user?.id && task.ownerUserId === session.user.id;
-  const isAdminUser = (session?.user as any)?.role === "admin";
+  const isAdminUser = session?.user?.role === "admin";
   const canEdit = isOwner || isAdminUser;
 
   return (

@@ -28,7 +28,7 @@ export async function writeAuditLog(params: {
       actorIp: params.actorIp ?? null,
       actorUserAgent: params.actorUserAgent ?? null,
       eventSummary: params.eventSummary,
-      metadata: params.metadata ? params.metadata : null,
+      metadata: params.metadata ?? null,
     });
   } catch (err) {
     console.error("Failed to write audit log:", err);

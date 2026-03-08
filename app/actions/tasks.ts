@@ -119,7 +119,7 @@ export async function editTask(taskId: string, formData: unknown): Promise<Actio
   }
 
   const isOwner = task.ownerUserId === currentUser.id;
-  const isAdminUser = (currentUser as any).role === "admin";
+  const isAdminUser = currentUser.role === "admin";
   if (!isOwner && !isAdminUser) {
     return { success: false, error: "You do not have permission to edit this task" };
   }
@@ -156,7 +156,7 @@ export async function editTask(taskId: string, formData: unknown): Promise<Actio
 
 export async function retryTaskSync(taskId: string): Promise<ActionResult> {
   const currentUser = await requireAuth();
-  if ((currentUser as any).role !== "admin") {
+  if (currentUser.role !== "admin") {
     return { success: false, error: "Forbidden" };
   }
 

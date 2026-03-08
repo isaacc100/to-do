@@ -8,14 +8,14 @@ export async function requireAuth() {
 
 export async function requireAdmin() {
   const user = await requireAuth();
-  if ((user as any).role !== "admin") throw new Error("Forbidden");
+  if (user.role !== "admin") throw new Error("Forbidden");
   return user;
 }
 
 export async function isAdmin(): Promise<boolean> {
   try {
     const session = await auth();
-    return (session?.user as any)?.role === "admin";
+    return session?.user?.role === "admin";
   } catch {
     return false;
   }

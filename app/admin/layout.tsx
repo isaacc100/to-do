@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
   if (!session?.user) redirect("/login?callbackUrl=/admin");
-  if ((session.user as any).role !== "admin") redirect("/");
+  if (session.user.role !== "admin") redirect("/");
 
   return (
     <div className="min-h-screen bg-gray-50">

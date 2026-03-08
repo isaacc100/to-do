@@ -9,7 +9,7 @@ export default auth((req) => {
     if (!user) {
       return NextResponse.redirect(new URL(`/login?callbackUrl=${encodeURIComponent(pathname)}`, req.url));
     }
-    if ((user as any).role !== "admin") {
+    if (user.role !== "admin") {
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
